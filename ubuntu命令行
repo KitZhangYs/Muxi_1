@@ -1,0 +1,90 @@
+ls  查询文件列表
+	ls /  将列出根目录'/'下的文件清单
+	ls -l 列出一个更为详细的文件清单
+	ls -a 列出包含隐藏文件（以.开头）在内的所有文件
+	ls -h 将以KB/MB/GB的形式给出文件大小,而不是以纯粹的Bytes.
+
+pwd  查询当前所在目录
+
+cd   进入其他目录
+
+echo "字符"  在屏幕上输出字符
+
+cat 文件名    显示文件内容
+
+cp 原文件名 复制文件名    复制文件
+
+mv 原文件名 新文件名        移动文件（重命名）
+
+
+touch 文件名        新建一个空文本文档
+
+mkdir 目录名        新建一个目录
+
+rm 文件名               删除文件（目录不可以直接用rm命令删除，需要加上-R参数）
+
+rm -R 目录名/文件名            删除目录/文件
+
+ps	查询当前进程
+	ps -a    例出系统当前运行的所有进程，包括由其他用户启动的进程
+	pa auxww 例出除一些很特殊进程以外的所有进程，并会以一个高可读的形式显示结果，每一个进程都会有较为详细的解释
+	
+重定向：
+	command > filename命令
+		将命令产生的输出流指向一个文件而不是（默认的）终端
+			zhangyunshuo@zhangyunshuo-ThinkPad-P15v-Gen-3:~/learn$ ls >file1.txt
+			zhangyunshuo@zhangyunshuo-ThinkPad-P15v-Gen-3:~/learn$ cat file1.txt
+			a
+			aa
+			a.out
+			file1.txt
+			hello
+			r1
+			test1.c
+			ubuntu命令行
+		可以发现ls命令应输出的内容被保存到了file1.txt中
+		若file1.txt不存在，则会创造file.txt
+		若file1.txt存在，那么上面的命令将覆盖文件的内容
+	command >> filename命令
+		如果你想将内容添加到已存在的文件内容的最后，那你可以用这个语句
+			zhangyunshuo@zhangyunshuo-ThinkPad-P15v-Gen-3:~/learn$ ls >> file1.txt
+			zhangyunshuo@zhangyunshuo-ThinkPad-P15v-Gen-3:~/learn$ cat file1.txt
+			a
+			aa
+			a.out
+			file1.txt
+			hello
+			r1
+			test1.c
+			ubuntu命令行
+			a
+			aa
+			a.out
+			file1.txt
+			hello
+			r1
+			test1.c
+			ubuntu命令行
+ 		可以发现原有的file1.txt中添加了新的内容
+ 	command < filename命令
+ 		把一个文件的内容作为将要执行的命令的输入
+	
+-v参数：要求系统给出执行命令的反馈信息
+	如：zhangyunshuo@zhangyunshuo-ThinkPad-P15v-Gen-3:~/learn$ mv -v readme.txt r1
+	         已重命名 'readme.txt' -> 'r1'
+	    zhangyunshuo@zhangyunshuo-ThinkPad-P15v-Gen-3:~/learn$ ls
+	    aa  a.out  hello  r1  read.tx  test1.c
+	   
+-p参数：让系统显示某一项的类型，如文件/文件夹/快捷链接等等
+	如：zhangyunshuo@zhangyunshuo-ThinkPad-P15v-Gen-3:~/learn$ ls
+	    '无标题文档 1'   a   aa   a.out   hello   r1   read.tx   test1.c
+	    zhangyunshuo@zhangyunshuo-ThinkPad-P15v-Gen-3:~/learn$ ls -p
+	    '无标题文档 1'   a/   aa   a.out   hello   r1   read.tx   test1.c
+
+-i参数：让系统执行操作前输出一条确认提示（注意，操作之前尽量加上-i参数）（执行此命令可以让-i成为默认参数：alias rm='rm -i'）
+	如：zhangyunshuo@zhangyunshuo-ThinkPad-P15v-Gen-3:~/learn$ ls
+	    '无标题文档 1'   a   aa   a.out   hello   r1   ra.txt   test1.c
+	    zhangyunshuo@zhangyunshuo-ThinkPad-P15v-Gen-3:~/learn$ rm -i ra.txt
+	    rm：是否删除普通空文件 'ra.txt'？ y
+  	    zhangyunshuo@zhangyunshuo-ThinkPad-P15v-Gen-3:~/learn$ ls
+	    '无标题文档 1'   a   aa   a.out   hello   r1   test1.c
