@@ -6,7 +6,7 @@ int main(){
 	while (scanf("%d%d",&n,&m)!=EOF){
 		if (n==0&&m==0)
 			break;
-		int i,j;
+		int i;
 		for (i=0;i<n;i++){
 			scanf("%d",&people[i]);
 		}
